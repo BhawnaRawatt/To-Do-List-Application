@@ -1,0 +1,31 @@
+
+<form [formGroup]="todolistForm"  (ngSubmit)="Create()">
+<input type = "text" formControlName = "Subject" placeholder="Topic" />
+<input type = "text" formControlName = "Data" placeholder="Data"/>
+
+<button type="submit" >{{isEditMode ? 'Update': 'Create'}}</button>
+</form>
+<hr>
+    <input type = "text" [(ngModel)] ="SearchText" placeholder="Search" name = "Search">
+    <button type = "button"  (click)="Search()">Search</button>
+
+
+<hr>
+<table border="1">
+<tr>
+    <th>Id</th>
+    <th>Subject</th>
+    <th>Data</th>
+    <th>Action</th>
+</tr>
+<tr *ngFor="let t of todolist">
+    <td>{{t.Id}}</td>
+    <td>{{t.Subject}}</td>
+    <td>{{t.Data}}</td>
+    <td>
+        <button type = 'button' (click)="edit(t)">Update</button>
+        <button type = 'button' (click)="remove(t.Id)">Delete</button>
+
+    </td>
+</tr>
+</table>
